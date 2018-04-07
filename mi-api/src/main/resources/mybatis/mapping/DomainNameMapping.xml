@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dabaizi.mi.dao.DomainNameDao" >
+    <resultMap id="resultMap" type="com.dabaizi.mi.domain.DomainName" >
+        <result column="id" property="userId" jdbcType="BIGINT" />
+        <result column="name" property="userName" jdbcType="VARCHAR" />
+        <result column="postfixId" property="postfixId" jdbcType="TINYINT" />
+        <result column="postfix" property="postfix" jdbcType="VARCHAR" />
+        <result column="description" property="description" jdbcType="VARCHAR" />
+        <result column="price" property="price" jdbcType="DECIMAL" />
+        <result column="link" property="link" jdbcType="VARCHAR" />
+        <result column="recommendType" property="recommendType" jdbcType="TINYINT" />
+        <result column="category1" property="category1" jdbcType="TINYINT" />
+        <result column="category2" property="category2" jdbcType="TINYINT" />
+        <result column="category3" property="category3" jdbcType="TINYINT" />
+        <result column="state" property="state" jdbcType="TINYINT" />
+        <result column="image" property="image" jdbcType="VARCHAR" />
+    </resultMap>
+    <sql id="Base_Column_List">
+        id,name,postfixId,postfix,description,price,link,recommendType,category1,category2,category3,state,image
+    </sql>
+    <!--查询-->
+    <select id="query" resultMap="resultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List" />
+        from domain_name where id = #{id,jdbcType=BIGINT}
+    </select>
+</mapper>
